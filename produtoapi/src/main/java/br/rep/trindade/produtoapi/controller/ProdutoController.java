@@ -2,10 +2,7 @@ package br.rep.trindade.produtoapi.controller;
 
 import br.rep.trindade.produtoapi.model.Produto;
 import br.rep.trindade.produtoapi.repository.ProdutoRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -31,7 +28,8 @@ public class ProdutoController {
         return produto;
     }
 
-    public Produto obterPorId(String id){
+    @GetMapping("/{id}")
+    public Produto obterPorId(@PathVariable("id") String id){
         Optional<Produto> produto = produtoRepository.findById(id);
         return produto.isPresent() ? produto.get() : null;
     }
