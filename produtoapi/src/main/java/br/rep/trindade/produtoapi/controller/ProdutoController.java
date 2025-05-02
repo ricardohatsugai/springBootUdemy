@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -27,6 +29,11 @@ public class ProdutoController {
 
         produtoRepository.save(produto);
         return produto;
+    }
+
+    public Produto obterPorId(String id){
+        Optional<Produto> produto = produtoRepository.findById(id);
+        return produto.isPresent() ? produto.get() : null;
     }
 
 }
