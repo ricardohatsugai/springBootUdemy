@@ -40,8 +40,8 @@ public class ProdutoController {
     }
 
     @PutMapping("{id}")
-    public void atualizar(@PathVariable("id") String id, @RequestBody
-    Produto produto){
+    public void atualizar(@PathVariable("id") String id,
+                          @RequestBody Produto produto){
         produto.setId(id);
         produtoRepository.save(produto);
     }
